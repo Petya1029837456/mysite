@@ -1,0 +1,207 @@
+/* Общий стиль страницы */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F4F4F4;
+  background-image: url('background.jpg'); /* Замените на свой путь к фону */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Заголовки */
+h1, h2 {
+  color: #333333;
+}
+
+/* Стиль кнопок */
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Стиль кнопки при наведении */
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Увеличенная тень при наведении */
+}
+
+/* Стиль кнопки при нажатии */
+button:active {
+  transform: scale(0.98); /* Немного уменьшать кнопку при нажатии */
+}
+
+/* Стиль для кнопок с ответами */
+#answers button {
+  display: block;
+  margin: 8px auto;
+  width: 80%;
+}
+
+/* Стиль для правильного ответа */
+.correct {
+  background-color: #28A745 !important;
+  animation: correctAnimation 0.5s ease-out;
+}
+
+/* Стиль для неправильного ответа */
+.wrong {
+  background-color: #DC3545 !important;
+  animation: wrongAnimation 0.5s ease-out;
+}
+
+/* Анимация для правильного ответа */
+@keyframes correctAnimation {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Анимация для неправильного ответа */
+@keyframes wrongAnimation {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Прогресс-бар */
+#progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  margin-top: 20px;
+}
+
+#progress-bar div {
+  width: 0;
+  height: 100%;
+  background-color: #28A745;
+  transition: width 1s linear;
+}
+
+/* Темная тема */
+body.dark-mode {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+button.dark-mode {
+  background-color: #555555;
+  color: white;
+}
+
+button.dark-mode:hover {
+  background-color: #444444;
+}
+/* Центральный контейнер */
+.container {
+  width: 600px; /* Ограничение ширины */
+  min-height: 300px; /* Минимальная высота */
+  max-height: 80vh; /* Не растягивать слишком сильно */
+  margin: auto; /* Центрирование по горизонтали */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%); /* Центрирование по вертикали */
+  background-color: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Стилизация скролл-бара */
+.container::-webkit-scrollbar {
+  width: 30px;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.container {
+  max-width: 800px;
+  margin: 40px auto; /* Горизонтальное центрирование */
+}
+/* Поддержка Firefox */
+.container {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+#leaderboard-list {
+  counter-reset: rank;
+  list-style: none;
+  padding: 0;
+}
+
+#leaderboard-list li {
+  counter-increment: rank;
+  background-color: #e0e0e0;
+  border-left: 5px solid #007BFF; /* 🔵 Ярко-синяя полоса */
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+  color: #222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  position: relative;
+  padding-left: 40px; /* чтобы было место для медальки */
+}
+
+#leaderboard-list li::before {
+  content: "🏅";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+/* Первое место 🥇 */
+#leaderboard-list li:nth-child(1)::before {
+  content: "🥇";
+}
+
+/* Второе место 🥈 */
+#leaderboard-list li:nth-child(2)::before {
+  content: "🥈";
+}
+
+/* Третье место 🥉 */
+#leaderboard-list li:nth-child(3)::before {
+  content: "🥉";
+}
+/* Белые точки, но мягкие */
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(0, 0, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Легкое свечение белыми оттенками */
+    border-radius: 50%;
+    z-index: -1; /* Чтобы частицы не мешали контенту */
+    animation: floatParticles 12s infinite ease-in-out;
+}
+
+/* Плавное движение частиц */
+@keyframes floatParticles {
+    0% { transform: translate(0, 0); opacity: 1; }
+    25% { transform: translate(-80px, 60px); opacity: 0.8; }
+    50% { transform: translate(100px, -90px); opacity: 0.9; }
+    75% { transform: translate(-50px, 30px); opacity: 1; }
+    100% { transform: translate(0, 0); opacity: 1; }
+}
+body {
+    overflow: hidden;
+}

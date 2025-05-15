@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <div id="start-screen">
+      <h1>Quiz</h1>
+      <button onclick="startQuiz()">Start</button>
+      <button onclick="showLeaderboard()">Leaderboard</button>
+    </div>
+
+    <div id="quiz-screen" style="display:none;">
+      <h2 id="question"></h2>
+      <div id="answers"></div>
+      <p>Points: <span id="score">0</span></p>
+      <!-- Вот здесь изменил onclick -->
+      <button onclick="endQuiz()">End</button>
+    </div>
+
+    <div id="leaderboard-screen" style="display:none;">
+      <h2>Leaderboard</h2>
+      <ul id="leaderboard-list"></ul>
+      <button onclick="goToStart()">Back</button>
+    </div>
+
+    <div id="description">
+      <p>Цей сайт — це інтерактивна вікторина, де ви можете перевірити свої знання в різних категоріях. Питання задаються випадковим чином, і ви повинні вибрати правильну відповідь серед кількох варіантів. За кожну правильну відповідь нараховуються бали. Кожен результат зберігається в лідерборді, де ви можете побачити, як ваші досягнення порівнюються з іншими користувачами.</p>
+      <p>Переклад питань може бути не зовсім точним через автоматичний процес переведення та обмеження в мовних моделях.</p>
+    </div>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'uk,ru,en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script
+    type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  ></script>
+</body>
+</html>
